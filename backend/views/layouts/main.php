@@ -35,17 +35,17 @@ AppAsset::register($this);
             'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Прокси', 'items' => [
-            ['label' => 'Тип адреса неизвестен', 'url' => Url::to(['/site/load-data-unknown'])],
-            ['label' => 'Тип адреса - HTTP', 'url' => Url::to(['/site/load-data-http'])],
-        ]],
-    ];
 
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems = [
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Прокси', 'items' => [
+                ['label' => 'Тип адреса неизвестен', 'url' => Url::to(['/site/load-data-unknown'])],
+                ['label' => 'Тип адреса - HTTP', 'url' => Url::to(['/site/load-data-http'])],
+            ]],
+        ];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
             . Html::submitButton(
